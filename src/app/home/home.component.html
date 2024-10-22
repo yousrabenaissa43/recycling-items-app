@@ -1,0 +1,48 @@
+<div class="recyclable-items">
+    <h1>Recyclable Items</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Item Name</th>
+                <th>Material Type</th>
+                <th>Location</th>
+                <th>Recycled Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of items">
+                <td>{{ item.itemName }}</td>
+                <td>{{ item.materialType }}</td>
+                <td>{{ item.location }}</td>
+                <td>{{ item.recycledDate | date: 'mediumDate' }}</td>
+                <td>
+                    <button (click)="onSelectItem(item)">View Details</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<app-item-details [recyclableItem]="selectedItem" *ngIf="selectedItem"></app-item-details>
+
+<h2>Add a New Recyclable Item</h2>
+<form [formGroup]="addItemForm" (ngSubmit)="addItem()">
+    <div>
+        <label for="itemName">Item Name:</label>
+        <input id="itemName" formControlName="itemName" required />
+    </div>
+    <div>
+        <label for="materialType">Material Type:</label>
+        <input id="materialType" formControlName="materialType" required />
+    </div>
+    <div>
+        <label for="location">Location:</label>
+        <input id="location" formControlName="location" required />
+    </div>
+    <div>
+        <label for="recycledDate">Recycled Date:</label>
+        <input type="date" id="recycledDate" formControlName="recycledDate" />
+    </div>
+    <button type="submit">Add Item</button>
+</form>

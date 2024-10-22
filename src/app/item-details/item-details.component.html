@@ -1,0 +1,7 @@
+<div class="item-details" *ngIf="recyclableItem">
+    <h2>Item Details</h2>
+    <p><strong>Item Name:</strong> {{ recyclableItem.itemName }}</p>
+    <p><strong>Material Type:</strong> {{ recyclableItem.materialType }}</p>
+    <p><strong>Location:</strong> {{ recyclableItem.location }}</p>
+    <p><strong>Recycled Date:</strong> {{ recyclableItem.recycledDate | date: 'mediumDate' }}</p>
+  </div>
